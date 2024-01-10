@@ -1,5 +1,5 @@
 <?php
-
+require_once("connect.php");
 function query($sql, $data=[], $check=false) {
     global $conn;
     $res = false;
@@ -28,7 +28,15 @@ function getRaw($sql) {
     $kq = query($sql, '', true);
     if (is_object($kq)) {
         $data = $kq->fetchAll(PDO::FETCH_ASSOC);
-        //print_r($data);
+        #print_r($data);
+    }
+    return $data;
+}
+
+function getOneRaw($sql) {
+    $kq = query($sql, '', true);
+    if (is_object($kq)) {
+        $data = $kq->fetch(PDO::FETCH_ASSOC);
     }
     return $data;
 }

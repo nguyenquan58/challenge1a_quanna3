@@ -1,8 +1,8 @@
 <?php
 const _HOST = 'localhost';
-const _DB = 'mydb';
+const _DB = 'my_db';
 const _USER = 'root';
-const _PASS = 'Password123!@#';
+const _PASS = 'Password123#@!';
 
 try {
     if (class_exists('PDO')) {

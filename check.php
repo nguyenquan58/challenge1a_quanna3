@@ -33,3 +33,8 @@ function filter() {
         return $array;
     }
 }
+
+function redirect($url) {
+    header ("location:$url");
+    exit;
+}
