@@ -1,5 +1,6 @@
 <?php
 require_once("connect.php");
+
 function query($sql, $data=[], $check=false) {
     global $conn;
     $res = false;
@@ -40,3 +41,16 @@ function getOneRaw($sql) {
     }
     return $data;
 }
+
+function update ($table, $data, $condition) {
+    $update =  '';
+    foreach ($data as $key => $value) {
+        $update .= $key . '=:' . $key . ',';
+    }
+    $update = trim($update, ',');
+    $sql = 'UPDATE ' . $table . ' SET ' . $update . ' WHERE ' . $condition;
+    //print($sql);
+    $kq = query($sql, $data);
+    return $kq;
+}
+

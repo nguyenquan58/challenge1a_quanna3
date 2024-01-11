@@ -1,5 +1,8 @@
 <?php
 
+require_once("connect.php");
+require_once("database.php");
+
 function isGet() {
     if ($_SERVER['REQUEST_METHOD']=='GET')
     return true;
@@ -37,4 +40,15 @@ function filter() {
 function redirect($url) {
     header ("location:$url");
     exit;
+}
+
+function isLogin() {
+    if (!empty($_SESSION["id"])) {
+        $id = $_SESSION["id"];
+        $sql = "SELECT * FROM User WHERE idUser='$id'";
+        $data = getoneRaw($sql);
+        if (!empty($data))
+            return true;
+    }
+    return false;
 }
