@@ -16,6 +16,7 @@ if (isPost()) {
         //echo 'welcome';
         $_SESSION["id"] = $data["idUser"];
         $_SESSION["name"] = $data["name"];
+        $_SESSION["perm"] = $data["perm"];
         $message = '';
     }
     else {

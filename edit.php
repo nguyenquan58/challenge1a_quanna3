@@ -8,7 +8,7 @@ if (!isLogin()) {
 } 
 
 $arr = filter();
-if (!empty($arr["id"]) && ($arr["id"] == $_SESSION["id"]))
+if (!empty($arr["id"]))
 {
     $id = $arr["id"];
     $sql = "SELECT * FROM User WHERE idUser='$id'";
@@ -20,9 +20,6 @@ if (!empty($arr["id"]) && ($arr["id"] == $_SESSION["id"]))
     $email = $user["email"];
     $phone = $user["phone"];
     $avt = $user["avatar"];
-}
-else {
-    redirect("profile.php?id=$arr['id']");
 }
 
 if (isPost()) {
@@ -39,7 +36,7 @@ if (isPost()) {
     $cond = "idUser='$id'";
     $kq = update('User', $data, $cond);
     //print($kq);
-    redirect("profile.php?id=$id");
+    redirect("personal_profile.php?id=$id");
 }
 
 ?>
@@ -49,11 +46,11 @@ if (isPost()) {
     <label for="acc">Tai khoan: </label>
     <input id="acc" name="acc" type="text" value="<?php echo $acc; ?>" readonly> <br>
     <label for="pass">Mat khau: </label>
-    <input id="pass" name="pass" type="text" value="<?php echo $pass; ?>"> <br>
+    <input id="pass" name="pass" type="text" value="<?php echo $pass; ?>" required> <br>
     <label for="email">Email: </label>
-    <input id="email" name="email" type="text" value="<?php echo $email; ?>"> <br>
+    <input id="email" name="email" type="text" value="<?php echo $email; ?>" required> <br>
     <label for="phone">Dien thoai: </label>
-    <input id="phone" name="phone" type="text" value="<?php echo $phone; ?>"> <br>
+    <input id="phone" name="phone" type="text" value="<?php echo $phone; ?>" required> <br>
     <input type = "hidden" name = "id" value = "<?php echo $id; ?>">
     <button type="submit">Save</button>
 </form>

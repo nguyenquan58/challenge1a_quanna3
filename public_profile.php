@@ -2,7 +2,10 @@
 session_start();
 require_once("check.php");
 require_once("database.php");
-if ($_SESSION["id"]) {
+
+if (!isLogin()) {
+    redirect("login.php");
+} 
     $arr = filter();
     if (!empty($arr["id"]))
     {
@@ -19,7 +22,7 @@ if ($_SESSION["id"]) {
     }
 
 ?>
-<a href="edit.php?id=<?php echo $id;?>" title="Update">Update</a> <br>
+
 <div class="profile">
     <table>
         <tbody>
@@ -27,11 +30,6 @@ if ($_SESSION["id"]) {
                 <td>Tài khoản</td>
                 <td>:</td>
                 <td><?php echo $acc; ?></td>
-            </tr>
-            <tr>
-                <td>Mật khẩu</td>
-                <td>:</td>
-                <td><?php echo $pass; ?></td>
             </tr>
             <tr>
                 <td>Email</td>
@@ -47,8 +45,3 @@ if ($_SESSION["id"]) {
     </table>
 </div>
         
-
-<?php
-}
-else redirect("login.php");
-?>

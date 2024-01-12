@@ -54,3 +54,17 @@ function update ($table, $data, $condition) {
     return $kq;
 }
 
+function insert($table, $data) {
+    $columns = '';
+    $values = '';
+    foreach ($data as $key => $value) {
+        $columns .= $key . ',';
+        $values .= ':' . $key . ',';
+    }
+    $columns = trim($columns, ',');
+    $values = trim($values,',');
+    $sql = 'INSERT INTO ' . $table . ' (' . $columns . ') VALUES ('. $values . ')';
+    print($sql);
+    $kq = query($sql, $data);
+    return $kq;
+}
