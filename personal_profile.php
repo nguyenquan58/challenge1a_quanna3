@@ -19,8 +19,10 @@ $phone = $data["phone"];
 $avt = $data["avatar"];
 
 ?>
+<a href="home.php" title="Profile">Home</a> <br>
 <a href="edit.php?id=<?php echo $_SESSION["id"] ;?>" title="Update">Chinh sua</a>
 <div class="profile">
+    <image src="./image/<?php echo $avt; ?>" alt="fail" width="200" height="200">
     <table>
         <tbody>
             <tr>
@@ -32,6 +34,11 @@ $avt = $data["avatar"];
                 <td>Mat khau</td>
                 <td>:</td>
                 <td><?php echo $pass; ?></td>
+            </tr>
+            <tr>
+                <td>Ho ten</td>
+                <td>:</td>
+                <td><?php echo $name; ?></td>
             </tr>
             <tr>
                 <td>Email</td>

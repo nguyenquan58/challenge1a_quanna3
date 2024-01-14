@@ -15,7 +15,7 @@ function query($sql, $data=[], $check=false) {
     }
 
     catch (Exception $e) {
-        echo $e->getMessage();
+        //echo $e->getMessage();
     }
 
     if ($check) {
@@ -29,7 +29,6 @@ function getRaw($sql) {
     $kq = query($sql, '', true);
     if (is_object($kq)) {
         $data = $kq->fetchAll(PDO::FETCH_ASSOC);
-        #print_r($data);
     }
     return $data;
 }
@@ -49,7 +48,6 @@ function update ($table, $data, $condition) {
     }
     $update = trim($update, ',');
     $sql = 'UPDATE ' . $table . ' SET ' . $update . ' WHERE ' . $condition;
-    //print($sql);
     $kq = query($sql, $data);
     return $kq;
 }
@@ -64,7 +62,14 @@ function insert($table, $data) {
     $columns = trim($columns, ',');
     $values = trim($values,',');
     $sql = 'INSERT INTO ' . $table . ' (' . $columns . ') VALUES ('. $values . ')';
-    print($sql);
     $kq = query($sql, $data);
     return $kq;
 }
+
+function delete($table, $condition) {
+    $sql = 'DELETE FROM ' . $table . ' WHERE ' . $condition;
+    print($sql);
+    $kq = query($sql);
+    return $kq;
+}
+

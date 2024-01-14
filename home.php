@@ -7,7 +7,6 @@ if (!isLogin()) {
 $id = $_SESSION["id"]; 
 $perm=$_SESSION["perm"];
 ?>
-
 <h1>WELCOME <?php echo $_SESSION["name"]; ?>!</h1>
 <a href="personal_profile.php" title="Profile">Profile</a> <br>
 <a href="list.php" title="List">Danh sach nguoi dung</a> <br>

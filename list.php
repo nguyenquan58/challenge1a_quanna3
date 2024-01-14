@@ -12,6 +12,8 @@ $list = getRaw($sql);
 $count = 1;
 ?>
 
+<a href="home.php" title="Profile">Home</a> <br>
+
 <h2>Danh sách người dùng<h2>
 
 <table>
